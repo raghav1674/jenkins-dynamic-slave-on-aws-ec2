@@ -21,6 +21,6 @@
 
 - I have included the Dockerfile in files/ folder , just download the java and mvn and copy in files/ folder and build your own image 
 
-	- (JAVA)[https://www.oracle.com/in/java/technologies/javase-downloads.html]
-
-        - (MAVEN)[https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip]
+- [JAVA](https://www.oracle.com/in/java/technologies/javase-downloads.html)
+        
+- [MAVEN](https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip)
