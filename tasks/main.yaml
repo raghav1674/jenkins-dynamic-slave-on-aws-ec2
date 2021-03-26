@@ -10,6 +10,7 @@
   - name: installing the docker engine 
     yum: 
       name: 
+      - iptables
       - docker-ce 
       - docker-ce-cli 
       - containerd.io    
