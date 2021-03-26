@@ -1,0 +1,9 @@
+key: KEY_NAME
+type_instance: t2.micro
+tag_name: JenkinsSlave
+subnet_id: SUBNET_ID
+region_id: ap-south-1
+security_group_id: SG_ID
+inventory_path: inventory
+ami_id: ami-052c08d70def0ac62
+has_public_ip: true

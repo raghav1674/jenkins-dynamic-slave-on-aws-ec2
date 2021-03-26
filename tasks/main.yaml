@@ -1,0 +1,52 @@
+- hosts: 'tag_Name_JenkinsSlave'
+  tasks:
+
+  - name: configuring yum for the docker
+    get_url:
+      url:  https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+
+
+  - name: installing the docker engine 
+    yum: 
+      name: 
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io    
+      state: present
+
+
+  - name: starting the docker daemon
+    service:
+      name: docker 
+      state: started
+      enabled: true 
+
+  - name: exposing DOCKER_HOST over TCP
+    lineinfile:
+      path: /usr/lib/systemd/system/docker.service
+      regexp: '^ExecStart=/usr/bin/dockerd -H fd://'
+      line: ExecStart=/usr/bin/dockerd -H fd://  -H tcp://0.0.0.0:4242
+    notify: 
+    - restart docker engine
+    register: docker_conf
+
+  - name: reload the system configurations 
+    systemd:
+      state: restarted
+      daemon_reload: true 
+      name: docker
+      enabled: true
+    when: docker_conf.changed 
+
+
+  handlers:   
+  - name: restart docker engine 
+    service:
+      name: docker
+      state: restarted
+
+
+
+
+
